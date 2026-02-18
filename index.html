@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online QR Code Generator - Create custom QR codes with customizable colors and size. Download as PNG image.">
+  <meta name="keywords" content="QR code, QR code generator, free QR code, online QR code">
+  <meta property="og:title" content="QR Code Generator">
+  <meta property="og:description" content="Free online QR Code Generator - Create custom QR codes with customizable colors and size.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#ffffff" id="themeColorMeta">
+  <title>QR Code Generator</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="loading-overlay" id="loadingOverlay" aria-hidden="true">
+    <div class="loading-spinner"></div>
+    <span class="loading-text">Generating QR Code...</span>
+  </div>
+  
+  <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode" aria-label="Switch to dark mode">🌙</button>
+  
+  <main class="container">
+    <h1>QR Code Generator</h1>
+    
+    <label for="textInput" class="sr-only">Enter text or URL</label>
+    <input type="text" id="textInput" placeholder="Enter text or URL..." autofocus />
+    <p class="validation-message" id="validationMessage" role="alert" aria-live="polite"></p>
+    
+    <div class="options">
+      <div class="option-group">
+        <label for="colorDark">QR Color</label>
+        <div class="color-picker-wrapper">
+          <input type="color" id="colorDark" value="#000000" aria-label="QR code foreground color">
+          <span class="color-value" id="colorDarkValue">#000000</span>
+        </div>
+      </div>
+      <div class="option-group">
+        <label for="colorLight">Background</label>
+        <div class="color-picker-wrapper">
+          <input type="color" id="colorLight" value="#ffffff" aria-label="QR code background color">
+          <span class="color-value" id="colorLightValue">#ffffff</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="option-group">
+      <label for="sizeSlider">Size</label>
+      <input type="range" class="size-slider" id="sizeSlider" min="100" max="2000" value="200" aria-label="QR code size">
+      <span class="size-display" id="sizeDisplay">200 x 200 px</span>
+    </div>
+    
+    <label class="border-option">
+      <input type="checkbox" id="addBorder" aria-label="Add border to downloaded QR code">
+      <span>Add border (matches background color)</span>
+    </label>
+    
+    <button id="generateBtn">Generate QR Code</button>
+    
+    <div id="qrcode" aria-live="polite"></div>
+    <span class="sr-only" id="qrcodeStatus" aria-live="polite"></span>
+    <button id="saveBtn">⬇ Save QR Code</button>
+    <a href="https://github.com/RamanusNetje" target="_blank" rel="noopener noreferrer" class="watermark">created by Ramanus Netje</a>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    (function () {
+      var meta = document.getElementById('themeColorMeta');
+      if (meta) {
+        var setThemeColor = function () {
+          meta.content = document.body.classList.contains('dark-mode') ? '#1a1a2e' : '#ffffff';
+        };
+        setThemeColor();
+        var obs = new MutationObserver(setThemeColor);
+        obs.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      }
+    })();
+  </script>
+</body>
+</html>
