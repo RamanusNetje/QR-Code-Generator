@@ -1,0 +1,15 @@
+node_modules/
+.DS_Store
+Thumbs.db
+npm-debug.log*
+.env
+.env.*
+
+logs
+*.log
+
+.npm
+.eslintcache
+
+dist/
+build/
