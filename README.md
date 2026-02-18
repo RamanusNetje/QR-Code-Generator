@@ -25,17 +25,6 @@ I created this project to show that I understand core JavaScript—working with 
 - **Live:** After deployment, open `https://<username>.github.io/<repo-name>/` (use your GitHub username and repo name).
 - **Locally:** Open `index.html` in a browser to run it offline.
 
-## Deploy on GitHub Pages
-
-1. Create a repository and push these files:
-   - `index.html`
-   - `app.js`
-   - `style.css`
-   - `js/qrcode.min.js`
-2. Go to **Settings** → **Pages**
-3. Under **Branch**, choose `main` (or `master`), then **Save**
-4. Your site will be at `https://<username>.github.io/<repo-name>/`
-
 ## Project structure
 
 | File | Description |
